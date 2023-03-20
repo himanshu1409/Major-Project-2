@@ -1,0 +1,3 @@
+# Major-Project-2
+![Screenshot (1518)](https://user-images.githubusercontent.com/120622494/226330460-259c8670-c499-4bdc-a649-8d97cd95b3b3.png)
+This is a simple social media website clone "Codeial".It has Sign In/ Sign Up feature. User needs to login for creating a post or deleting an already existing post created by him/her.It also has the feature of adding or deleting comments and liking others' posts.Chat Engine is in Beta stage.The whole backend is written in NodeJS which employs a MVC folder structure and REST APIs. It employs a NoSQL or MongoDB database to store data of users, posts, comments, etc and having CRUD functionality.
