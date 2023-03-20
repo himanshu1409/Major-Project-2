@@ -9,16 +9,17 @@ passport.use(
   new LocalStrategy(
     {
       usernameField: "email",
+      passReqToCallback: true,
     },
-    function (email, password, done) {
+    function (req, email, password, done) {
       // find a user and establish the identity
       User.findOne({ email: email }, function (err, user) {
         if (err) {
-          console.log("Error in finding User --> Passport");
+          req.flash("error", err);
           return done(err);
         }
         if (!user || user.password != password) {
-          console.log("Invalid Username/Password");
+          req.flash("error", "Invalid Username/Password");
           return done(null, false);
         }
         return done(null, user);
@@ -45,9 +46,11 @@ passport.deserializeUser(function (id, done) {
 
 // check if the user is authenticated
 passport.checkAuthentication = function (req, res, next) {
+  // console.log("hello profile");
   // if the user is signed in, then pass on the request to the next function(controller's action)
   if (req.isAuthenticated()) {
-    return next;
+    // console.log("hello profile if");
+    return next();
   }
 
   // if the user is not signed in
