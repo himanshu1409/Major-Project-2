@@ -32,13 +32,13 @@ module.exports.update = async function (req, res) {
           console.log("****** Multer Error:", err);
         }
 
-        // console.log(req.file);
+        console.log(req.file);
         user.name = req.body.name;
         user.email = req.body.email;
         if (req.file) {
-          if (user.avatar) {
-            fs.unlinkSync(path.join(__dirname, "..", user.avatar));
-          }
+          // if (user.avatar) {
+          //   fs.unlinkSync(path.join(__dirname, "..", user.avatar));
+          // }
 
           // this is saving the path of the uploaded file into the avatar field into the user
           user.avatar = User.avatarPath + "/" + req.file.filename;
